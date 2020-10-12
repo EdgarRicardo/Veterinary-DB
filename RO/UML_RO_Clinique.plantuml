@@ -1,0 +1,77 @@
+@startuml
+
+hide circle
+
+note as Contraintes
+    Contraintes Globales:
+    *Tous les attributs
+      sont NOT NULL,
+      en cas contraire
+      sera marque
+      dans chaque table.
+end note
+
+class Client {
+  nom : string
+  prenom : string
+  date_naissance : date
+  adresse : string
+  num_telephone : int
+}
+note left:num_telephone est\ncomposé de 10 ciffres
+
+class Espece{
+  nom_espece : string {key}
+}
+
+class Animal{
+  nom: string
+  date_naissance : date
+}
+note right: date_naissance \npeut-etre NULL
+
+class Traitement{
+  date_debut : date
+  duree : int
+  doseXjour : float
+}
+note left:(duree,doseXjour)>0
+
+class ClassEspece{
+  class_espece : string {key}
+}
+
+
+class Medicament{
+  nom_molecule : string {key}
+}
+
+class Taille_Poids{
+  dateC : date {local key}
+  taille : float
+  poids : float
+}
+note left: Historique\n de chaque \nanimal\nà des fins\n statistiques\n(taille,poids)>0
+
+class Veterinaire{
+    nom : string
+}
+
+
+Animal "1" -- "*" Traitement : suit >
+
+Client "1" -- "*" Animal : possède
+
+Animal *-- "1..*" Taille_Poids
+
+Traitement "*" o-- "1" Medicament : contient >
+
+Veterinaire "1..*" - "1" ClassEspece : est specialisé en >
+
+Espece "1..*" --o "1" ClassEspece : appartient >
+
+Animal "1..*" -- "1" Espece : est de type >
+
+Veterinaire "1" -- "*" Traitement : prescrit
+
+@enduml

@@ -1,0 +1,73 @@
+//Clients
+
+create (Ines:Client {codeC:1, nom:'Rekik', prenom:'Ines', date_naissance:'28-11-1998', adresse:'rue Georges Charpak', num_telephone:'0695552993'})
+
+create (Mathieu:Client {codeC:2, nom:'Jacques', prenom:'Mathieu', date_naissance:'02-03-1998', adresse:'rue Le Feron', num_telephone:'0615121672'})
+
+
+//Animal
+
+create (Milos:Animal {code_animal:1, nom:'Milos', date_naissance:'15-11-2016', espece:'Chat'})
+
+create (Nemo:Animal {code_animal:2, nom:'Nemo', date_naissance:'28-11-2015', espece:'Poisson'})
+
+create (Funky:Animal {code_animal:3, nom:'Funky', date_naissance:'14-02-2009', espece:'Chien'})
+
+create (Tsss:Animal {code_animal:4, nom:'Tsss', date_naissance:'15-11-2016', espece:'Serpent'})
+
+//Medicament
+
+create (Doliprane:Medicament {nom_molecule:'Doliprane', effet:'Tout type de douleur'})
+
+create (Antadis:Medicament {nom_molecule:'Antadis', effet:'Calme les douleurs au ventre'})
+
+create (Paracetamol:Medicament {nom_molecule:'Paracetamol', effet:'Douleur et fievre'})
+
+//Veterinaire
+
+create (Ricardo:Veterinaire {codeV:1, nom:'Corona', prenom:'Ricardo', specialite:'Mammiferes', date_naissance:'14-05-1998', adresse:'residence Roberval', num_telephone:'0647382910'} )
+
+create (Miguel:Veterinaire {codeV:2, nom:'Murillo', prenom:'Miguel', specialite:'Reptile', date_naissance:'12-04-1998', adresse:'residence Roberval', num_telephone:'0613242526'})
+
+//Traitement
+
+create (t1:Traitement {num_traitement:1, date_debut:'15-11-2016'})
+
+create (t2:Traitement {num_traitement:2, date_debut:'15-11-2017'})
+
+create (t3:Traitement {num_traitement:3, date_debut:'15-12-2018'})
+
+create (t4:Traitement {num_traitement:4, date_debut:'13-04-2016'})
+
+create (t5:Traitement {num_traitement:5, date_debut:'23-03-2016'})
+
+//liaisons animaux-clients
+
+create (Milos)<-[:possede]-(Ines)
+create (Funky)<-[:possede]-(Mathieu)
+create (Tsss)<-[:possede]-(Mathieu)
+create (Nemo)<-[:possede]-(Ines)
+
+//liaisons medicaments-Traitement
+
+create (Paracetamol)<-[:contient {duree : 7,doseXjour : 1}]-(t1)
+create (Doliprane)<-[:contient  {duree : 1,doseXjour : 0.5}]-(t2)
+create (Paracetamol)<-[:contient  {duree : 4,doseXjour : 1}]-(t3)
+create (Paracetamol)<-[:contient  {duree : 2,doseXjour : 0.5}]-(t4)
+create (Doliprane)<-[:contient  {duree : 3,doseXjour : 1}]-(t5)
+
+//liaisons veterinaires-Traitement
+
+create (t1)<-[:prescrit]-(Miguel)
+create (t2)<-[:prescrit]-(Miguel)
+create (t3)<-[:prescrit]-(Ricardo)
+create (t4)<-[:prescrit]-(Ricardo)
+create (t5)<-[:prescrit]-(Ricardo)
+
+//liaisons Traitement-animaux
+
+create (t1)<-[:suit]-(Milos)
+create (t2)<-[:suit]-(Funky)
+create (t3)<-[:suit]-(Nemo)
+create (t4)<-[:suit]-(Tsss)
+create (t5)<-[:suit]-(Tsss)

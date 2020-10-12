@@ -1,0 +1,115 @@
+@startuml
+
+hide circle
+
+note as Contraintes
+    Contraintes Globales:
+    *Tous les attributs
+      sont NOT NULL,
+      en cas contraire
+      sera marque
+      dans chaque table.
+end note
+
+note as N1
+     Tous les héritages
+     présents sont exclusifs
+end note
+
+class Personne <<Abstract>>{
+  nom : string
+  prenom : string
+  date_naissance : date
+  adresse : string
+  num_telephone : int
+}
+note left:num_telephone est\ncomposé de 10 ciffres
+
+class Client{
+
+}
+
+class Personnel <<Abstract>>{
+}
+
+
+class Assistant{
+}
+
+class Veterinaire{
+}
+
+
+class ClassEspece{
+  class_espece : string {key}
+}
+note right: {Mammiferes,\n Reptiles,\n Oiseaux,\n Autres}
+
+
+
+class Espece{
+  nom_espece : string {key}
+}
+
+class Animal{
+  nom: string
+  date_naissance : date
+}
+note right: date_naissance \npeut-etre NULL
+
+class Traitement{
+  date_debut : date
+}
+
+class Medicament{
+  nom_molecule : string {key}
+  effect : string
+}
+
+class Taille_Poids{
+  dateC : date {local key}
+  taille : float
+  poids : float
+}
+note left: Historique\n de chaque \nanimal\nà des fins\n statistiques\n(taille,poids)>0*
+
+class DosageMed {
+	duree : int
+	doseXjour : float
+}
+note right:(duree,doseXjour)>0
+
+
+
+Personne<|--Client
+Personne<|--Personnel
+
+
+Personnel<|--Assistant
+Personnel<|--Veterinaire
+
+Espece "1..*" --o "1" ClassEspece : appartient >
+
+Animal "1..*" -- "1" Espece : est de type >
+
+Animal "1" -- "*" Traitement : suit >
+
+Veterinaire "1" -- "*" Traitement : prescrit
+
+Personnel "1..*" - "1" ClassEspece : est specialisé en >
+
+Traitement "*" o-- "1..*" Medicament : contient >
+
+Client "1" -- "*" Animal : possède
+
+Medicament "1..*" -- "1..*" Espece: autorise >
+
+Animal "1" *-- "1..*" Taille_Poids
+
+(Traitement, Medicament) .. DosageMed
+
+
+
+@enduml
+
+

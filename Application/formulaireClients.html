@@ -1,0 +1,24 @@
+<HTML>
+<HEAD>
+	<TITLE>Formulaire</TITLE>
+	<META name="type_contenu"  content="text/html;" http-equiv="content-type" charset="utf-8">
+	<LINK rel="stylesheet" href="Styles.css">
+</HEAD>
+
+<BODY>
+	<CENTER><H2>Insertion d'un nouveau Client</H2>
+	<DIV>
+	<FORM METHOD="POST" ACTION="insertionClient.php">
+		Nom<BR/><INPUT NAME="nom" REQUIRED><BR/>
+		Prenom<BR/><INPUT NAME="prenom" required><BR/>
+		Date de naissance<BR/><INPUT NAME="DN" TYPE="Date" required><BR/>
+		Adresse<BR/><INPUT NAME="adresse" TYPE="text" required><BR/>
+		Telephone<BR/><INPUT NAME="NT" TYPE="tel" required><BR/>
+		<BR/>
+		<INPUT TYPE="SUBMIT" VALUE="Valider">
+		&nbsp;&nbsp;&nbsp;<INPUT TYPE="RESET" VALUE="Effacer"><BR/>
+	</FORM>
+	</DIV>
+	</CENTER>
+</BODY>
+</HTML>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?oxygen RNGSchema="CliniqueVeterinaireSchema_RelaxNG.rng" type="xml"?>
+<traitements>
+    <traitement>
+        <veterinaire>
+            <nom>Murillo</nom>
+            <prenom>Kevin</prenom>
+        </veterinaire>
+        <medicament>
+            <nom>Antadis</nom>
+            <qte>1</qte>
+        </medicament>
+    </traitement>
+    
+    <traitement>
+        <veterinaire>
+            <nom>Jacques</nom>
+            <prenom>Mateo</prenom>
+        </veterinaire>
+        <medicament>
+            <nom>Paracetamol</nom>
+            <qte>3</qte>
+        </medicament>
+    </traitement>	
+</traitements>

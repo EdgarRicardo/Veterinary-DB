@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar 
+    xmlns="http://relaxng.org/ns/structure/1.0"
+    xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+    datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <start>
+        <element name="traitements">
+            <oneOrMore>
+                <element name="traitement">
+                    <oneOrMore>
+                        <element name="veterinaire">
+                            <oneOrMore>
+                                <element name="nom"><text/></element>
+                                <element name="prenom"><text/></element>
+                            </oneOrMore>
+                        </element>
+                        <element name="medicament">
+                            <oneOrMore>
+                                <element name="nom"><text/></element>
+                                <element name="qte"><data type="integer"/></element>
+                            </oneOrMore>
+                        </element>
+                    </oneOrMore>
+                </element>
+            </oneOrMore>
+        </element>
+    </start>
+</grammar>

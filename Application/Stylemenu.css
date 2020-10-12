@@ -1,0 +1,38 @@
+body 
+{
+	font-family: Arial, "Times New Roman",Times, serif;
+	color: #012d49;
+	text-align: left;
+	font-size:25px;
+	font-weight:bold;
+}
+
+h2
+{
+	color:  #c65519;
+	
+	font-size:30px;
+	border-top:black 2px solid;
+	border-bottom:black 2px solid;
+	border-top-left-radius: 20px;
+  	border-bottom-right-radius: 20px;
+}
+
+a
+{
+	color: #111111;
+	font-size:18px;
+	text-decoration:none;
+}
+
+
+A:hover 
+{ 
+	color: #8ed8e8;
+	font-size: 22px;
+}
+
+dl
+{
+	line-height: 1.5;
+}
